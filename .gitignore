@@ -1,0 +1,38 @@
+# dependencies
+/node_modules
+
+# yarn
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+yarn-debug.log*
+yarn-error.log*
+
+# testing
+/src/**/*storage-stage.json
+/test-results/
+/playwright-report/
+/playwright/.cache/
+results.json
+
+
+# env files
+.env*
+
+# misc
+.DS_Store
+
+# idea
+.idea/
+
+*.tsbuildinfo
+/blob-report/
+
+.env*.local
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+node_modules/
