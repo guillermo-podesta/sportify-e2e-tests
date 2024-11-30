@@ -1,0 +1,19 @@
+{
+  "name": "sportify-e2e-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/guillermo-podesta/sportify-e2e-tests.git",
+  "author": "Guillermo <guillermoe.podesta@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.1"
+  },
+  "dependencies": {
+    "os": "^0.1.2",
+    "tslib": "^2.8.1"
+  }
+}
