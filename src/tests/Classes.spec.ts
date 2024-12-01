@@ -22,5 +22,7 @@ test.describe.serial("Classes", () => {
     test("Eliminar la clase previamente creada", async ({page}) => {
         await clickAtDeleteModalbutton(page);
         await clickAtDeleteButton(page);
+
+        await expect(page.getByRole("cell", {name: "Clase de Testing"})).not.toBeVisible();
     });
 });
