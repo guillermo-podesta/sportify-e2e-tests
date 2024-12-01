@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
-import { sportifyStorageStagePath } from "../utils/auth/auth-storage-stage";
-import { goToUsersPage } from "../pages/Users-page";
+import { sportifyStorageStagePath } from "@/utils/auth/auth-storage-stage";
+import { goToUsersPage } from "@/pages/Users-page";
 
 test.use({storageState: sportifyStorageStagePath});
 
