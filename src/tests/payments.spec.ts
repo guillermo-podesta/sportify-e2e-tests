@@ -1,17 +1,16 @@
 import test, { expect } from "@playwright/test";
 import { sportifyStorageStagePath } from "../utils/auth/auth-storage-stage";
-import { clickAtCreateNewPayment, clickAtPayButton, fillPaymentsForm, goToPaymentsPage } from "../pages/payments-pages";
+import { clickAtCreateNewPayment, clickAtPayButton, fillPaymentsForm, goToPaymentsPage } from "../pages/Payments-pages";
 
 test.use({storageState: sportifyStorageStagePath});
 
 test.beforeEach(async ({page}) => {
     await page.goto("Localhost:5213");
-
+    await goToPaymentsPage(page);
 });
 
 test.describe("Payments", () => {
     test("Crear un nuevo pago de plan Basico", async ({page}) => {
-        await goToPaymentsPage(page);
         await clickAtCreateNewPayment(page);
         await fillPaymentsForm(page, "1");
         
@@ -22,7 +21,6 @@ test.describe("Payments", () => {
     });
 
     test("Crear un nuevo pago de plan Premium", async ({page}) => {
-        await goToPaymentsPage(page);
         await clickAtCreateNewPayment(page);
         await fillPaymentsForm(page, "2");
         

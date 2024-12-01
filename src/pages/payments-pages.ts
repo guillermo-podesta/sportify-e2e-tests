@@ -1,8 +1,8 @@
 import { Page } from "@playwright/test";
 
 const goToPaymentsPage = async (page: Page) => {
-    await page.getByRole('button', { name: 'Toggle Dropdown' }).click();
-    await page.getByRole('link', { name: 'Gestionar Suscripción' }).click();
+    await page.locator('li').filter({ hasText: 'Subscripciones Toggle' }).getByRole('button').click();
+    await page.getByRole('link', { name: 'Gestionar Subscripciones' }).click();
 };
 
 
