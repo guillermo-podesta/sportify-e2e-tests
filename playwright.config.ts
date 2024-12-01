@@ -16,6 +16,6 @@ export default defineConfig({
   use: {
     actionTimeout: 0,
     trace: "on-first-retry",
-    screenshot: "only-on-failure"  
+    screenshot: "on"  
   },
 });

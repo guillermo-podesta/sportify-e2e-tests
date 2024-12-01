@@ -8,7 +8,7 @@ const sportifyLogin = async () => {
     await page.goto("localhost:5213");
 
     await page.getByRole('link', { name: 'Iniciar Sesión' }).click();
-    await page.getByPlaceholder('nombre@gmail.com').fill("guille@user.com");
+    await page.getByPlaceholder("nombre@gmail.com").fill("admin@sportify.com");
     await page.getByPlaceholder("contraseña").fill("Sportify123!");
 
     await page.getByRole("button", {name: "Iniciar sesión"}).click();

@@ -9,8 +9,8 @@ test.beforeEach(async ({page}) => {
 });
 
 test.describe("Login", () => {
-    test("Validar el login de un usuario final", async ({page}) =>{
-        await expect(page.getByRole('link', { name: 'Bienvenido guille@user.com!' })).toBeVisible();
+    test("Validar el login de un admin", async ({page}) =>{
+        await expect(page.getByRole('link', { name: 'Bienvenido admin@sportify.com!' })).toBeVisible();
         
     });
 
