@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 import { sportifyStorageStagePath } from "../utils/auth/auth-storage-stage";
-import { clickAtCreateANewTeacher, clickAtCreateTeacher, fillTeachersForm, goToTeachersPage } from "../pages/Teachers-page"
+import { clickAtCreateANewTeacher, clickAtCreateTeacher, clickAtDeleteButton, clickAtDeleteTeacherButton, fillTeachersForm, goToTeachersPage } from "../pages/Teachers-page"
 
 test.use({storageState: sportifyStorageStagePath});
 
@@ -19,7 +19,10 @@ test.describe.serial("Teachers", () => {
         await expect(page.getByRole("cell", {name: "Profesor de Prueba"})).toBeVisible();
     });
 
-    test.only("Eliminar el profesor previamente creado", async ({page}) =>{
-        await page.waitForTimeout(5000);
+    test("Eliminar el profesor previamente creado", async ({page}) =>{
+        await clickAtDeleteTeacherButton(page);
+        await clickAtDeleteButton(page);
+
+        await expect(page.getByRole("cell", {name: "Profesor de Prueba"})).not.toBeVisible();
     });
 });

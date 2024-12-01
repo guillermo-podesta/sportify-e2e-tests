@@ -22,4 +22,12 @@ const clickAtCreateTeacher = async (page: Page) => {
     await page.getByRole('button', { name: 'Crear' }).click();
 };
 
-export {goToTeachersPage, clickAtCreateANewTeacher, fillTeachersForm, clickAtCreateTeacher}
+const clickAtDeleteTeacherButton = async (page: Page) => {
+    await page.getByRole('link', { name: 'Icono de eliminar' }).nth(3).click();
+};
+
+const clickAtDeleteButton = async (page: Page) => {
+    await page.getByRole('button', { name: 'Borrar' }).click();
+};
+
+export {goToTeachersPage, clickAtCreateANewTeacher, fillTeachersForm, clickAtCreateTeacher, clickAtDeleteButton, clickAtDeleteTeacherButton};
