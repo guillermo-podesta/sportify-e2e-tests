@@ -1,0 +1,41 @@
+name: E2E Tests Production
+
+
+on:
+  push:
+   workflow_dispatch:
+
+jobs:
+    e2e-test:
+        name: E2E Test
+        runs-on: ubuntu-latest
+        timeout-minutes: 60
+        steps:
+          - name: Clone repository
+            uses: actions/checkout@v3
+    
+          - name: Setup Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '16' 
+              cache: 'yarn'      
+
+          - name: Install dependencies
+            run: yarn install
+    
+          - name: Install playwright
+            run: |
+              yarn playwright install --with-deps
+    
+          - name: Run e2e tests
+            run: |
+              yarn test:e2e
+          
+          - name: Playwright Report
+            id: playwright-report
+            uses: actions/upload-artifact@v4
+            if: ${{ failure() }}
+            with:
+              name: playwright-report
+              path: playwright-report/
+              retention-days: 5
