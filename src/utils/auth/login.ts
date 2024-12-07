@@ -1,4 +1,5 @@
 import { chromium, Page } from "@playwright/test";
+import { sportifyStorageStagePath } from "./auth-storage-stage";
 
 const sportifyLogin = async () => {
     const browser = await chromium.launch();
@@ -13,7 +14,7 @@ const sportifyLogin = async () => {
 
     await page.getByRole("button", {name: "Iniciar sesión"}).click();
 
-    await page.context().storageState({path: "src/utils/auth/sportify-storage-stage.json"});
+    await page.context().storageState({path: sportifyStorageStagePath});
 
     await browser.close();
 };
