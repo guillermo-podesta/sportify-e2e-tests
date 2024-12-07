@@ -5,7 +5,7 @@ const sportifyLogin = async () => {
 
     const page = await browser.newPage();
 
-    await page.goto("localhost:5213");
+    await page.goto("localhost:5213", {waitUntil: "load"});
 
     await page.getByRole('link', { name: 'Iniciar Sesión' }).click();
     await page.getByPlaceholder("nombre@gmail.com").fill("admin@sportify.com");
