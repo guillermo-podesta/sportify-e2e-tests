@@ -1,6 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { sportifyStorageStagePath } from "../utils/auth/auth-storage-stage";
-import { clickAtCreateANewTeacher, clickAtCreateTeacher, clickAtDeleteButton, clickAtDeleteTeacherButton, fillTeachersForm, goToTeachersPage } from "../pages/teachers-page"
+import { clickAtCreateANewTeacher, clickAtCreateTeacher, clickAtDeleteButton, clickAtDeleteTeacherButton, fillTeachersForm, goToTeachersPage } from "@/pages/teachers-page";
+
 
 test.use({storageState: sportifyStorageStagePath});
 
