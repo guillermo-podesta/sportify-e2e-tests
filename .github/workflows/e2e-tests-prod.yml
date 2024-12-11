@@ -24,13 +24,13 @@ jobs:
 
       - name: Start server
         run: |
-          yarn start & # Asegúrate de que 'yarn start' es el comando correcto para iniciar el servidor
+          yarn start
         env:
           PORT: 8080
 
       - name: Wait for server to be ready
         run: |
-          npx wait-on http://localhost:8080 # Verifica que el puerto sea correcto y la app esté accesible aquí
+          npx wait-on http://localhost:8080
 
       - name: Run e2e tests
         run: yarn test:e2e
