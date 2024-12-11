@@ -1,37 +1,45 @@
 name: E2E Tests Production
 
-
 on:
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    e2e-test:
-        name: E2E Test
-        runs-on: ubuntu-latest
-        timeout-minutes: 60
-        steps:
-          - name: Clone repository
-            uses: actions/checkout@v3
-    
-          - name: Setup Node.js
-            uses: actions/setup-node@v3      
+  e2e-test:
+    name: E2E Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
 
-          - name: Install dependencies
-            run: yarn install
-    
-          - name: Install playwright
-            run: |
-              yarn playwright install --with-deps
-    
-          - name: Run e2e tests
-            run: |
-              yarn test:e2e
-          
-          - name: Playwright Report
-            id: playwright-report
-            uses: actions/upload-artifact@v4
-            if: ${{ failure() }}
-            with:
-              name: playwright-report
-              path: playwright-report/
-              retention-days: 5
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Install playwright
+        run: |
+          yarn playwright install --with-deps
+
+      - name: Start server
+        run: |
+          yarn start & # Asegúrate de que 'yarn start' es el comando correcto para iniciar el servidor
+        env:
+          PORT: 8080
+
+      - name: Wait for server to be ready
+        run: |
+          npx wait-on http://localhost:8080 # Verifica que el puerto sea correcto y la app esté accesible aquí
+
+      - name: Run e2e tests
+        run: yarn test:e2e
+
+      - name: Playwright Report
+        id: playwright-report
+        uses: actions/upload-artifact@v4
+        if: ${{ failure() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 5
