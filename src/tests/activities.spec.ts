@@ -5,7 +5,7 @@ import { clickAtCreateButton, clickAtCreateNewActivity, clickAtDeleteButton, cli
 test.use({storageState: sportifyStorageStagePath});
 
 test.beforeEach(async ({page}) => {
-    await page.goto("Localhost:5213");
+    await page.goto("Localhost:8080");
     await goToActivitiesPage(page);
 });
 
