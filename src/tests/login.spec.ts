@@ -4,7 +4,7 @@ import { sportifyStorageStagePath } from "@/utils/auth/auth-storage-stage";
 test.use({storageState: sportifyStorageStagePath});
 
 test.beforeEach(async ({page}) => {
-    await page.goto("localhost:5213");
+    await page.goto("localhost:8080");
 
 });
 
@@ -15,6 +15,6 @@ test.describe("Login", () => {
     });
 
     test("Verificar que el usuario se encuentra en la Home una vez logueado", async ({page}) => {
-        await expect(page).toHaveURL("http://localhost:5213/Home/Index");
+        await expect(page).toHaveURL("http://localhost:8080/Home/Index");
     });
 });

@@ -6,7 +6,7 @@ import { clickAtCreateANewTeacher, clickAtCreateTeacher, clickAtDeleteButton, cl
 test.use({storageState: sportifyStorageStagePath});
 
 test.beforeEach(async ({page}) => {
-    await page.goto("Localhost:5213");
+    await page.goto("Localhost:8080");
     await goToTeachersPage(page);
 });
 
