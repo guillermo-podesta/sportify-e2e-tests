@@ -10,9 +10,16 @@ const clickAtReportsPerClassButton = async (page: Page) => {
 };
 
 const getReportRows = async (page: Page) => {
-    const reportRows = await page.getByTestId("report-row").all();
-
+    const reportRows = await page.getByTestId(`report-row-${getActualMonth()}`).all();
+    
     return {reportRows};
+};
+
+const getActualMonth = () => {
+    const date = new Date;
+    const monthName = date.toLocaleString('default', { month: 'long' });
+    
+    return monthName;
 };
 
 

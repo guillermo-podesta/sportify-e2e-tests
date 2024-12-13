@@ -15,7 +15,7 @@ test.describe("Reports", () => {
         await clickAtReportsPerClassButton(page);
 
         const {reportRows} = await getReportRows(page);
-
+        
         expect(reportRows.length).toBeGreaterThan(0);
     });
 })
