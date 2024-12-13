@@ -1,3 +1,4 @@
+import environmentVariables from "@/utils/auth/environment-variables";
 import { Page } from "@playwright/test";
 
 const goToPaymentsPage = async (page: Page) => {
@@ -13,9 +14,9 @@ const clickAtCreateNewPayment = async (page: Page) => {
 const fillPaymentsForm = async (page: Page, planOption: string) => { 
     await page.locator('#plansSelect').selectOption(planOption);
     await page.getByLabel('Seleccionar Método de Pago').selectOption('2');
-    await page.getByLabel('Ingrese número de Tarjeta').fill('4344443353544663');
+    await page.getByLabel('Ingrese número de Tarjeta').fill(environmentVariables.CREDIT_CARD_NUMBER);
     await page.locator('#Fecha').fill('2025-12');
-    await page.getByLabel('Ingrese código de seguridad').fill('252');
+    await page.getByLabel('Ingrese código de seguridad').fill(environmentVariables.CREDIT_CARD_SECRET);
 };
 
 const clickAtPayButton = async (page: Page) => {
