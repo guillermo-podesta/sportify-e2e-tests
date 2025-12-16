@@ -1,6 +1,6 @@
 import { sportifyLogin } from "./src/utils/auth/login"
 
-const globalSetup = async () => {
+const globalSetup = () => {
     Promise.all([sportifyLogin()])
 }
 
